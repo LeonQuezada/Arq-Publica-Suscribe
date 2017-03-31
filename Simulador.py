@@ -78,13 +78,16 @@ import pika
 from SensorTemperatura import SensorTemperatura
 from SensorRitmoCardiaco import SensorRitmoCardiaco
 from SensorPresion import SensorPresion
+from SensorAcelerometro import SensorAcelerometro
 
 
 class SetUpSimulador:
     sensores = []
     temperatura = 0
     ritmo_cardiaco = 0
+    acelerometro = 0
     presion = 0
+
 
     def main(self):
         print('+---------------------------------------------+')
@@ -147,6 +150,9 @@ class SetUpSimulador:
             self.create_heart_rate_sensor(nombre)
             print('|    SENSOR RITMO CARDIACO   |    ASIGNADO   |')
             print('+---------------------------------------------+')
+            self.create_Sensor_Acelerometro(nombre)
+            print('|     SENSOR Acelerometro    |    ASIGNADO   |')
+            print('+---------------------------------------------+')
             print('')
             raw_input('presiona enter para continuar: ')
         print('+---------------------------------------------+')
@@ -168,6 +174,20 @@ class SetUpSimulador:
         print('+---------------------------------------------+')
         print('|      PRESION ARTERIAL      |        ?       |')
         print('+---------------------------------------------+')
+
+
+
+
+        acelerometro_maximo = raw_input('acelerometro máximo: ')
+        self.acelerometro = int(acelerometro_maximo)
+        print('+---------------------------------------------+')
+        print('|      PRESION ARTERIAL      |      ' + acelerometro_maximo +'       |')
+        print('+---------------------------------------------+')
+        print('|        Acelerometro        |        ?       |')
+        print('+---------------------------------------------+')
+
+
+
         presion_maxima = raw_input('presión máxima: ')
         self.presion = int(presion_maxima)
         print('+---------------------------------------------+')
@@ -193,6 +213,13 @@ class SetUpSimulador:
         s = SensorRitmoCardiaco(nombre)
         self.sensores.append(s)
 
+    def create_Sensor_Acelerometro(self, nombre):
+        s = SensorAcelerometro(nombre)
+        self.sensores.append(s)
+
+
+
+
     def run_simulator(self):
         self.start_consumers()
         self.start_publishers()
@@ -204,6 +231,8 @@ class SetUpSimulador:
             "gnome-terminal -e 'bash -c \"python RitmoCardiacoManager.py " + str(self.ritmo_cardiaco) + "; sleep 5 \"'")
         os.system(
             "gnome-terminal -e 'bash -c \"python PresionManager.py " + str(self.presion) + "; sleep 5 \"'")
+        os.system(
+            "gnome-terminal -e 'bash -c \"python AcelerometroManager.py " + str(self.acelerometro) + "; sleep 5 \"'")
 
     def start_publishers(self):
         for x in xrange(0, 1000):
