@@ -91,6 +91,11 @@ class SetUpSimulador:
     acelerometro = 0
     presion = 0
 
+    #Variables para el temporizador
+    nombrePaciente = []
+    nombreMedicamento = []
+    horaMedicamento = []
+
 
     def main(self):
         print('+---------------------------------------------+')
@@ -145,17 +150,29 @@ class SetUpSimulador:
             print('|           NOMBRE           |        ?       |')
             print('+---------------------------------------------+')
             nombre = raw_input('escribe el nombre: ')
+
             print('+---------------------------------------------+')
             print('|           NOMBRE           | ' + nombre +' |')
             print('+---------------------------------------------+')
             print('|Asignar medicinas a paciente|')
-            print('|numero de medicamentos para paciente        |')
-            num_med = raw_input('número entero: ')
-            for x in xrange(0, int(num_med)):
+            print('|numero de medicamentos para paciente         |')
+            num = raw_input('número entero: ')
+            print('+---------------------------------------------+')
+            #nombrePaciente = []
+            #nombreMedicamento = []
+            #horaMedicamento = []
+
+            for y in xrange(0, int(num)):
                 print('|Escriba el nombre del medicamento           |')
-                nom_med = raw_input('escribe el nombre: ')
-                print('||')
-                print('||')
+                nombre_med = raw_input('escribe el nombre: ')
+                print('|el rango de los grupos es de 1 a 12 horas   |')
+                numero_med = raw_input('número entero: ')
+                print('+---------------------------------------------+')
+                self.nombrePaciente.append(nombre)
+                self.nombreMedicamento.append(nombre_med)
+                self.horaMedicamento.append(numero_med)
+                self.temporizador()
+
             print('+---------------------------------------------+')
             self.create_temperature_sensor(nombre)
             print('|     SENSOR TEMPERATURA     |    ASIGNADO   |')
@@ -233,10 +250,39 @@ class SetUpSimulador:
         s = SensorAcelerometro(nombre)
         self.sensores.append(s)
 
+    def temporizador(self):
+        for g in range(0,len(self.nombrePaciente)):
+            if self.horaMedicamento[g] == "1":
+                print "El Paciente: "+ self.nombrePaciente[g]+" le toca el medicamento "+self.nombreMedicamento[g] 
+            if self.horaMedicamento[g] == "2":
+                print "El Paciente: "+ self.nombrePaciente[g]+" le toca el medicamento "+self.nombreMedicamento[g]
+            if self.horaMedicamento[g] == "3":
+                print "El Paciente: "+ self.nombrePaciente[g]+" le toca el medicamento "+self.nombreMedicamento[g]
+            if self.horaMedicamento[g] == "4":
+                print "El Paciente: "+ self.nombrePaciente[g]+" le toca el medicamento "+self.nombreMedicamento[g]
+            if self.horaMedicamento[g] == "5":
+                print "El Paciente: "+ self.nombrePaciente[g]+" le toca el medicamento "+self.nombreMedicamento[g]
+            if self.horaMedicamento[g] == "6":
+                print "El Paciente: "+ self.nombrePaciente[g]+" le toca el medicamento "+self.nombreMedicamento[g]
+            if self.horaMedicamento[g] == "7":
+                print "El Paciente: "+ self.nombrePaciente[g]+" le toca el medicamento "+self.nombreMedicamento[g]
+            if self.horaMedicamento[g] == "8":
+                print "El Paciente: "+ self.nombrePaciente[g]+" le toca el medicamento "+self.nombreMedicamento[g]
+            if self.horaMedicamento[g] == "9":
+                print "El Paciente: "+ self.nombrePaciente[g]+" le toca el medicamento "+self.nombreMedicamento[g]
+            if self.horaMedicamento[g] == "10":
+                print "El Paciente: "+ self.nombrePaciente[g]+" le toca el medicamento "+self.nombreMedicamento[g]
+            if self.horaMedicamento[g] == "11":
+                print "El Paciente: "+ self.nombrePaciente[g]+" le toca el medicamento "+self.nombreMedicamento[g]
+            if self.horaMedicamento[g] == "12":
+                print "El Paciente: "+ self.nombrePaciente[g]+" le toca el medicamento "+self.nombreMedicamento[g]
+
+
 
 
 
     def run_simulator(self):
+        
         self.start_consumers()
         self.start_publishers()
 
