@@ -171,7 +171,6 @@ class SetUpSimulador:
                 self.nombrePaciente.append(nombre)
                 self.nombreMedicamento.append(nombre_med)
                 self.horaMedicamento.append(numero_med)
-                self.temporizador()
 
             print('+---------------------------------------------+')
             self.create_temperature_sensor(nombre)
@@ -308,8 +307,8 @@ class SetUpSimulador:
 
 
     def run_simulator(self):
-        
         self.start_consumers()
+        self.temporizador()
         self.start_publishers()
 
     def start_consumers(self):
@@ -321,6 +320,8 @@ class SetUpSimulador:
             "gnome-terminal -e 'bash -c \"python PresionManager.py " + str(self.presion) + "; sleep 5 \"'")
         os.system(
             "gnome-terminal -e 'bash -c \"python AcelerometroManager.py " + str(self.acelerometro) + "; sleep 5 \"'")
+        os.system(
+            "gnome-terminal -e 'bash -c \"python temporilizador.py ; sleep 5 \"'")
 
     def start_publishers(self):
         for x in xrange(0, 1000):
