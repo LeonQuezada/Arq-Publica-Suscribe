@@ -51,9 +51,10 @@
 #           |                        |                          |    publicación se uti-|
 #           |                        |                          |    lizará.            |
 #           +------------------------+--------------------------+-----------------------+
-#           |                        |                          |  - Genera un número   |
-#           |     simulate_data()    |           None           |    aleatorio entre 60 |
-#           |                        |                          |    y 150.             |
+#           |                        |                          |  - Genera un números  |
+#           |     simulate_data()    |           None           |    aleatorio en dos   | 
+#           |                        |                          |    rangos de 70 a 100 | 
+#           |                        |                          |    y de 101 a 150     |
 #           +------------------------+--------------------------+-----------------------+
 #
 #           Nota: "propio de Rabbit" implica que se utilizan de manera interna para realizar
@@ -109,8 +110,9 @@ class SensorAcelerometro:
         print('')
         connection.close()
 
+    #Esta if lo agrege para que fuera un poco mas real
     def simulate_data(self):
-        if random.randint(int(1), int(2)) == 1
+        if random.randint(int(1), int(2)) == 1:
             return random.randint(int(70), int(100))
         else:
             return random.randint(int(101), int(150))

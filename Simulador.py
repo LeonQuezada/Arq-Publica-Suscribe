@@ -55,6 +55,9 @@
 #           |    create_heart_rate    |     String: nombre       |  - Instancia la clase |
 #           |        _sensor()        |                          |    SensorRitmoCardiaco|
 #           +-------------------------+--------------------------+-----------------------+
+#           |    create_Sensor_       |     String: nombre       |  - Instancia la clase |
+#           |    Acelerometro()       |                          |    SensorAcelerometro |
+#           +-------------------------+--------------------------+-----------------------+
 #           |                         |                          |  - Ejecuta los metodos|
 #           |    run_simulator()      |           None           |    que inician a los  |
 #           |                         |                          |    subscriptores y a  |
@@ -114,6 +117,10 @@ class SetUpSimulador:
         print('|                      |     los latidos del  |')
         print('|                      |     corazón.         |')
         print('+----------------------+----------------------+')
+        print('|     CAIDA            |   - Velocidad excesi-|')
+        print('|                      |     va del acelerom- |')
+        print('|                      |     etro|')
+        print('+----------------------+----------------------+')
         print('')
         raw_input('presiona enter para continuar: ')
         print('')
@@ -140,6 +147,15 @@ class SetUpSimulador:
             nombre = raw_input('escribe el nombre: ')
             print('+---------------------------------------------+')
             print('|           NOMBRE           | ' + nombre +' |')
+            print('+---------------------------------------------+')
+            print('|Asignar medicinas a paciente|')
+            print('|numero de medicamentos para paciente        |')
+            num_med = raw_input('número entero: ')
+            for x in xrange(0, int(num_med)):
+                print('|Escriba el nombre del medicamento           |')
+                nom_med = raw_input('escribe el nombre: ')
+                print('||')
+                print('||')
             print('+---------------------------------------------+')
             self.create_temperature_sensor(nombre)
             print('|     SENSOR TEMPERATURA     |    ASIGNADO   |')
@@ -177,7 +193,7 @@ class SetUpSimulador:
 
 
 
-
+        #Sensor Agregado
         acelerometro_maximo = raw_input('acelerometro máximo: ')
         self.acelerometro = int(acelerometro_maximo)
         print('+---------------------------------------------+')
