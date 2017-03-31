@@ -78,6 +78,7 @@
 import os
 import time
 import pika
+import time
 from SensorTemperatura import SensorTemperatura
 from SensorRitmoCardiaco import SensorRitmoCardiaco
 from SensorPresion import SensorPresion
@@ -249,6 +250,7 @@ class SetUpSimulador:
         s = SensorAcelerometro(nombre)
         self.sensores.append(s)
 
+    # este es el codigo que envia la hora del medicamento 
     def temporizador(self):
 
 
@@ -263,41 +265,43 @@ class SetUpSimulador:
 
 
         for g in range(0,len(self.nombrePaciente)):
+            #esto simula el paso del tiempo
+            time.sleep(10)
             for h in range(0,len(self.nombrePaciente)):
-                if self.horaMedicamento[g] == "1":
+                if self.horaMedicamento[g] == "1" and g == h:
                     mensaje="El Paciente: "+ self.nombrePaciente[g]+" le toca el medicamento "+self.nombreMedicamento[g]
                     channel.basic_publish(exchange='',routing_key='temporizador',body=mensaje)
-                if self.horaMedicamento[g] == "2":
+                if self.horaMedicamento[g] == "2" and g == h:
                     mensaje="El Paciente: "+ self.nombrePaciente[g]+" le toca el medicamento "+self.nombreMedicamento[g]
                     channel.basic_publish(exchange='',routing_key='temporizador',body=mensaje)
-                if self.horaMedicamento[g] == "3":
+                if self.horaMedicamento[g] == "3" and g == h: 
                     mensaje="El Paciente: "+ self.nombrePaciente[g]+" le toca el medicamento "+self.nombreMedicamento[g]
                     channel.basic_publish(exchange='',routing_key='temporizador',body=mensaje)
-                if self.horaMedicamento[g] == "4":
+                if self.horaMedicamento[g] == "4" and g == h:
                     mensaje="El Paciente: "+ self.nombrePaciente[g]+" le toca el medicamento "+self.nombreMedicamento[g]
                     channel.basic_publish(exchange='',routing_key='temporizador',body=mensaje)
-                if self.horaMedicamento[g] == "5":
+                if self.horaMedicamento[g] == "5" and g == h:
                     mensaje="El Paciente: "+ self.nombrePaciente[g]+" le toca el medicamento "+self.nombreMedicamento[g]
                     channel.basic_publish(exchange='',routing_key='temporizador',body=mensaje)
-                if self.horaMedicamento[g] == "6":
+                if self.horaMedicamento[g] == "6" and g == h:
                     mensaje="El Paciente: "+ self.nombrePaciente[g]+" le toca el medicamento "+self.nombreMedicamento[g]
                     channel.basic_publish(exchange='',routing_key='temporizador',body=mensaje)
-                if self.horaMedicamento[g] == "7":
+                if self.horaMedicamento[g] == "7" and g == h:
                     mensaje="El Paciente: "+ self.nombrePaciente[g]+" le toca el medicamento "+self.nombreMedicamento[g]
                     channel.basic_publish(exchange='',routing_key='temporizador',body=mensaje)
-                if self.horaMedicamento[g] == "8":
+                if self.horaMedicamento[g] == "8" and g == h:
                     mensaje="El Paciente: "+ self.nombrePaciente[g]+" le toca el medicamento "+self.nombreMedicamento[g]
                     channel.basic_publish(exchange='',routing_key='temporizador',body=mensaje)
-                if self.horaMedicamento[g] == "9":
+                if self.horaMedicamento[g] == "9" and g == h:
                     mensaje="El Paciente: "+ self.nombrePaciente[g]+" le toca el medicamento "+self.nombreMedicamento[g]
                     channel.basic_publish(exchange='',routing_key='temporizador',body=mensaje)
-                if self.horaMedicamento[g] == "10":
+                if self.horaMedicamento[g] == "10" and g == h:
                     mensaje="El Paciente: "+ self.nombrePaciente[g]+" le toca el medicamento "+self.nombreMedicamento[g]
                     channel.basic_publish(exchange='',routing_key='temporizador',body=mensaje)
-                if self.horaMedicamento[g] == "11":
+                if self.horaMedicamento[g] == "11" and g == h:
                     mensaje="El Paciente: "+ self.nombrePaciente[g]+" le toca el medicamento "+self.nombreMedicamento[g]
                     channel.basic_publish(exchange='',routing_key='temporizador',body=mensaje)
-                if self.horaMedicamento[g] == "12":
+                if self.horaMedicamento[g] == "12" and g == h:
                     mensaje="El Paciente: "+ self.nombrePaciente[g]+" le toca el medicamento "+self.nombreMedicamento[g]
                     channel.basic_publish(exchange='',routing_key='temporizador',body=mensaje)
         connection.close() 
